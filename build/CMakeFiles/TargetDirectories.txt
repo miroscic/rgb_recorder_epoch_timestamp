@@ -1,3 +1,0 @@
-C:/mirrorworld/rgb_recorder_epoch_timestamp/build/CMakeFiles/rgb_recorder.dir
-C:/mirrorworld/rgb_recorder_epoch_timestamp/build/CMakeFiles/ALL_BUILD.dir
-C:/mirrorworld/rgb_recorder_epoch_timestamp/build/CMakeFiles/ZERO_CHECK.dir
