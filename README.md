@@ -113,7 +113,57 @@ The application creates two files:
 
 ## Timestamp Precision
 
-Timestamps are captured using `std::chrono::high_resolution_clock` and represent nanoseconds since Unix epoch (January 1, 1970, 00:00:00 UTC). The actual precision depends on the system's clock resolution.
+Timestamps are captured using `std::chrono::system_clock` and represent nanoseconds since Unix epoch (January 1, 1970, 00:00:00 UTC). The actual precision depends on the system's clock resolution.
+
+## Supported Cameras
+
+### Built-in/USB Cameras
+- **Laptop built-in webcams** (usually camera ID 0)
+- **USB webcams** (Logitech, Microsoft, etc.)
+- **USB capture cards** for external video sources
+- **Industrial USB cameras** (UVC compatible)
+
+### Camera IDs
+- `0`: Default camera (usually built-in webcam)
+- `1, 2, 3...`: Additional cameras in order of detection
+- Use different IDs to test which camera you want to use
+
+### iPhone as Camera
+
+To use an iPhone as a camera source, you have several options:
+
+#### Option 1: USB Connection (Recommended)
+1. **Install iPhone camera software:**
+   - **Windows**: Use apps like "EpocCam", "iVCam", or "Camo"
+   - **macOS**: Use "Continuity Camera" (built-in) or third-party apps
+
+2. **Connect iPhone via USB cable**
+
+3. **The iPhone should appear as a camera device** (usually camera ID 1 or 2)
+
+#### Option 2: Wireless Connection
+1. **Install apps like:**
+   - **EpocCam** (free/paid versions available)
+   - **iVCam** 
+   - **DroidCam** (also works with iPhone)
+
+2. **Connect iPhone and computer to same WiFi network**
+
+3. **iPhone will appear as a virtual camera device**
+
+#### Option 3: RTMP/Network Streaming
+For advanced users, you can modify the code to accept RTMP streams from iPhone camera apps.
+
+### Camera Testing
+To test which cameras are available:
+```bash
+# Try different camera IDs
+./rgb_recorder test.mp4 0  # Built-in camera
+./rgb_recorder test.mp4 1  # External/iPhone camera
+./rgb_recorder test.mp4 2  # Additional camera
+```
+
+The application will show an error if the camera ID doesn't exist, so you can easily test which cameras are available on your system.
 
 ## Troubleshooting
 
